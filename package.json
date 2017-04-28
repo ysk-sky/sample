@@ -1,0 +1,25 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "test.js",
+  "scripts": {
+    "test": "gulp test"
+  },
+  "author": "ysks",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "3.14.1",
+    "eslint-config-airbnb": "14.0.0",
+    "eslint-plugin-import": "2.2.0",
+    "eslint-plugin-jsx-a11y": "4.0.0",
+    "eslint-plugin-node": "3.0.5",
+    "eslint-plugin-react": "6.10.0",
+    "gulp": "3.9.1",
+    "gulp-mocha": "4.1.0",
+    "gulp-plumber": "1.1.0",
+    "selenium-standalone": "6.1.0",
+    "should": "11.2.1",
+    "webdriverio": "4.6.2"
+  }
+}
