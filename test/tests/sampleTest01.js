@@ -5,10 +5,23 @@ const fs = require('fs');
 const config = {};
 config.url = 'https://www.google.co.jp/';
 config.outdir = 'ss';
+config.chromeOptions = {};
+config.chromeOptions.args = [
+  '--headless',
+  '--disable-gpu',
+  '--window-size=1696,1280'
+];
 
 let client;
 
-function joinOutputPath(str) {
+const options = {
+  desiredCapabilities: {
+    browserName: 'chrome',
+    chromeOptions: config.chromeOptions
+  }
+};
+
+function joinOutputPath (str) {
   return `${config.outdir}/${str}.png`;
 }
 
@@ -22,7 +35,7 @@ module.exports = function () {
     before(function (done) {
       this.timeout(30000);
       client = webdriverio
-        .remote({ desiredCapabilities: { browserName: 'chrome' } })
+        .remote(options)
         .init().url(config.url).call(done);
       process.on('uncaughtException', (err) => {
         const date = new Date().toLocaleString().replace(/\s|\//g, '-').replace(/:/g, '');

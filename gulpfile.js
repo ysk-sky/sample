@@ -4,14 +4,22 @@ const selenium = require('selenium-standalone');
 const mocha = require('gulp-mocha');
 const plumber = require('gulp-plumber');
 
+const options = {
+  drivers: {
+    chrome: {
+      version: '2.29',
+      arch: process.arch,
+      baseURL: 'https://chromedriver.storage.googleapis.com'
+    },
+  },
+  logger (message) { }
+}
 // task (Selenium init & run)
 gulp.task('selenium', (done) => {
-  selenium.install({
-    logger(message) { }
-  }, (err) => {
+  selenium.install(options, (err) => {
     if (err) return done(err);
 
-    selenium.start((err, child) => {
+    selenium.start(options, (err, child) => {
       if (err) return done(err);
       selenium.child = child;
       return done();
